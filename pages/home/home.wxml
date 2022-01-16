@@ -1,0 +1,26 @@
+<camera style="width: 100%;height: {{winHeight}}px;" flash="off" device-position="{{cameraForward}}" wx:if="{{isShow === false}}">
+  <cover-view class="selectItem">
+    <cover-image src="/images/icon/reverse.png" bindtap="reverseCamera" />
+    <cover-image src="/images/icon/camera.png" bindtap="takePhoto" />
+    <cover-image src="/images/icon/album.png" bindtap="choosePhoto" />
+  </cover-view>
+</camera>
+<view wx:else>
+  <image src="{{photoPath}}" style="height: {{winHeight}}px;width: 100%;display: block;" mode="aspectFill" />
+  <view class="faceInfo_box" wx:if="{{isShowBox}}">
+    <view class="faceInfo_item">
+      <text>年龄：{{faceInfo.age}}</text>
+      <text>性别：{{map.gender[faceInfo.gender.type]}}</text>
+    </view>
+    <view class="faceInfo_item">
+      <text>颜值：{{faceInfo.beauty}}</text>
+      <text>表情：{{map.expression[faceInfo.expression.type]}}</text>
+    </view>
+    <view class="faceInfo_item">
+      <text>眼睛：{{map.glasses[faceInfo.glasses.type]}}</text>
+      <text>情绪：{{map.emotion[faceInfo.emotion.type]}}</text>
+    </view>
+  </view>
+  <button type="warn" bindtap="reChoose" class="reChoose" size="mini">重选照片</button>
+  <button class="backPhoto" bindtap="backPhoto" size="mini" type="warn">返回拍照</button>
+</view>
